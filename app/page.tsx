@@ -77,7 +77,7 @@ export default function AGIKit() {
             interfaces.
           </p>
         </div>
-        <Link href="/agi-kit/docs">
+        <Link href="/docs">
           <button className="inline-flex h-10 items-center justify-center rounded-full bg-black px-4 text-base text-white">
             Get Started
           </button>
