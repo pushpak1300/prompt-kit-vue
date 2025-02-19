@@ -11,6 +11,8 @@ import {
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { TextMorph } from "@/components/ui/text-morph";
+import { AnimatedBackground } from "@/components/ui/animated-background";
+import { AnimatePresence, motion } from "motion/react";
 
 const TABS = [
   {
@@ -52,6 +54,12 @@ function PromptInputBasic() {
   );
 }`;
 
+const MOTION_TRANSITION = {
+  duration: 0.25,
+  type: "spring",
+  bounce: 0,
+};
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState(TABS[0]);
   const [hasCopyLabel, setHasCopyLabel] = useState(false);
@@ -66,13 +74,13 @@ export default function Home() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <>
       <div className="mb-12 flex flex-col items-start">
         <div className="mb-5 flex flex-col gap-1 text-pretty">
-          <p className="text-4xl font-[450] tracking-tight text-black">
+          <p className="text-3xl font-[450] tracking-tight text-black">
             Core building block for AI apps.
           </p>
-          <p className="text-4xl font-[450] tracking-tight text-zinc-500">
+          <p className="text-3xl font-[450] tracking-tight text-zinc-500">
             High-quality, accessible, and customizable components for AI
             interfaces.
           </p>
@@ -86,22 +94,53 @@ export default function Home() {
       </div>
       <div className="mb-40 flex flex-col gap-10">
         <div className="flex min-h-[350px] w-full items-end rounded border border-zinc-200 p-8">
-          {activeTab.component()}
+          <AnimatePresence initial={false} mode="wait">
+            <motion.div
+              key={activeTab.label}
+              className="w-full"
+              initial={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
+              transition={MOTION_TRANSITION}
+            >
+              {activeTab.component()}
+            </motion.div>
+          </AnimatePresence>
         </div>
         <div className="flex flex-row justify-center gap-8">
-          {TABS.map((tab) => (
-            <button
-              key={tab.label}
-              onClick={() => setActiveTab(tab)}
-              className={cn(
-                "flex flex-row items-center gap-1 rounded-md px-2 py-1 text-sm text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900",
-                activeTab === tab && "bg-zinc-100 text-zinc-900"
-              )}
-            >
-              <img src={tab.img} alt={tab.label} className="h-auto w-4" />
-              {tab.label}
-            </button>
-          ))}
+          <AnimatedBackground
+            defaultValue={activeTab.label}
+            className={cn(
+              "rounded-lg bg-zinc-100 transition-colors group-hover:bg-zinc-200/60 group-active:bg-zinc-200"
+            )}
+            transition={MOTION_TRANSITION}
+            onValueChange={(newActiveId) => {
+              const newActiveTab = TABS.find(
+                (tab) => tab.label === newActiveId
+              );
+              if (newActiveTab) {
+                setActiveTab(newActiveTab);
+              }
+            }}
+          >
+            {TABS.map((tab) => (
+              <button
+                key={tab.label}
+                data-id={tab.label}
+                className={cn(
+                  "rounded-md px-2 py-1 text-sm text-zinc-500 hover:text-black active:scale-[0.98] transition-all",
+                  "group",
+                  activeTab.label === tab.label && "text-black"
+                )}
+                type="button"
+              >
+                <span className="flex flex-row items-center gap-1">
+                  <img src={tab.img} alt={tab.label} className="h-auto w-4" />
+                  {tab.label}
+                </span>
+              </button>
+            ))}
+          </AnimatedBackground>
         </div>
       </div>
       <CodeBlock className="relative mb-20 rounded" language="tsx">
@@ -115,6 +154,6 @@ export default function Home() {
         </CodeBlockGroup>
         <CodeBlockCode code={CODE_SAMPLE} />
       </CodeBlock>
-    </div>
+    </>
   );
 }
