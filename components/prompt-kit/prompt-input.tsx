@@ -15,7 +15,7 @@ type PromptInputContextType = {
   isLoading: boolean;
   value: string;
   setValue: (value: string) => void;
-  maxHeight: number;
+  maxHeight: number | string;
   onSubmit?: () => void;
   disabled?: boolean;
 };
@@ -41,7 +41,7 @@ type PromptInputProps = {
   isLoading?: boolean;
   value?: string;
   onValueChange?: (value: string) => void;
-  maxHeight?: number;
+  maxHeight?: number | string;
   onSubmit?: () => void;
   children: React.ReactNode;
   className?: string;
@@ -105,10 +105,10 @@ function PromptInputTextarea({
 
     if (!textareaRef.current) return;
     textareaRef.current.style.height = "auto";
-    textareaRef.current.style.height = `${Math.min(
-      textareaRef.current.scrollHeight,
-      maxHeight
-    )}px`;
+    textareaRef.current.style.height =
+      typeof maxHeight === "number"
+        ? `${Math.min(textareaRef.current.scrollHeight, maxHeight)}px`
+        : `min(${textareaRef.current.scrollHeight}px, ${maxHeight})`;
   }, [value, maxHeight, disableAutosize]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
