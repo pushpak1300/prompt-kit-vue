@@ -1,7 +1,7 @@
 import createMDX from "@next/mdx";
 import * as v1 from "codehike/mdx";
 import { remarkCodeHike } from "codehike/mdx";
-
+import remarkGfm from "remark-gfm";
 /** @type {import('codehike/mdx').CodeHikeConfig} */
 const chConfig = {
   syntaxHighlighting: { theme: "github-light" },
@@ -9,9 +9,9 @@ const chConfig = {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   remarkPlugins: [
+    remarkGfm,
     [v1.remarkCodeHike, chConfig],
     [remarkCodeHike, { theme: "github-light", lineNumbers: false }],
   ],

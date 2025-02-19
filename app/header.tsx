@@ -11,7 +11,7 @@ export function Header({ triggerViewportWidth }: HeaderProps) {
   const isMobileView = useBreakpoint(triggerViewportWidth);
 
   return (
-    <nav className="z-60 absolute left-0 top-0 w-full px-4 py-4 text-white md:py-5">
+    <nav className="z-60 absolute left-0 top-0 w-full px-4 py-4 text-white">
       <div className="mx-auto flex max-w-2xl items-center justify-between text-zinc-900">
         <Link href="/" className="">
           <h1 className="font-[450] lowercase">prompt-kit</h1>

@@ -74,7 +74,12 @@ function PromptInput({
           onSubmit,
         }}
       >
-        <div className={cn("bg-primary-foreground rounded-3xl p-2", className)}>
+        <div
+          className={cn(
+            "border-input bg-background shadow-xs border rounded-3xl p-2",
+            className
+          )}
+        >
           {children}
         </div>
       </PromptInputContext.Provider>

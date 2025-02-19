@@ -70,7 +70,7 @@ export default function Home() {
       <div className="mb-12 flex flex-col items-start">
         <div className="mb-5 flex flex-col gap-1 text-pretty">
           <p className="text-4xl font-[450] tracking-tight text-black">
-            Core building block for LLM apps.
+            Core building block for AI apps.
           </p>
           <p className="text-4xl font-[450] tracking-tight text-zinc-500">
             High-quality, accessible, and customizable components for AI
