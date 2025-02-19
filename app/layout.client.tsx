@@ -19,18 +19,18 @@ import { cn } from "@/lib/utils";
 const coreMenuItems = [
   {
     title: "Introduction",
-    url: "/agi-kit/docs/introduction",
+    url: "/docs/introduction",
   },
   {
     title: "Installation",
-    url: "/agi-kit/docs/installation",
+    url: "/docs/installation",
   },
 ];
 
 const componentsMenuItems = [
   {
     title: "Prompt Input",
-    url: "/agi-kit/docs/prompt-input",
+    url: "/docs/prompt-input",
   },
 ];
 

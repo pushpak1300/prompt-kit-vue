@@ -52,7 +52,7 @@ function PromptInputBasic() {
   );
 }`;
 
-export default function AGIKit() {
+export default function Home() {
   const [activeTab, setActiveTab] = useState(TABS[0]);
   const [hasCopyLabel, setHasCopyLabel] = useState(false);
 
