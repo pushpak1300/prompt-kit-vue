@@ -1,5 +1,5 @@
-'use client';
-import { cloneElement, useState } from 'react';
+"use client";
+import { cloneElement, useState } from "react";
 
 type CardComponentProps = {
   children: React.ReactElement;
@@ -17,7 +17,7 @@ export default function CardComponent({
   };
 
   return (
-    <div className='relative -mx-6 flex items-start justify-center border-y border-neutral-200 bg-white px-6 py-12 dark:border-white/10 dark:bg-neutral-900 sm:mx-0 sm:rounded-lg sm:border sm:px-8'>
+    <div className="relative -mx-6 flex items-start justify-center border-y border-zinc-200 bg-white px-6 py-12 dark:border-white/10 dark:bg-zinc-900 sm:mx-0 sm:rounded-lg sm:border sm:px-8">
       {hasReTrigger && (
         <button
           className={`absolute right-4 top-3 cursor-pointer`}

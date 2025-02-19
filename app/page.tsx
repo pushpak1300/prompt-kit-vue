@@ -68,7 +68,7 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-2xl">
       <div className="mb-12 flex flex-col items-start">
-        <div className="mb-5 flex flex-col gap-1">
+        <div className="mb-5 flex flex-col gap-1 text-pretty">
           <p className="text-4xl font-[450] tracking-tight text-black">
             Core building block for LLM apps.
           </p>
@@ -77,10 +77,11 @@ export default function Home() {
             interfaces.
           </p>
         </div>
-        <Link href="/docs">
-          <button className="inline-flex h-10 items-center justify-center rounded-full bg-black px-4 text-base text-white">
-            Get Started
-          </button>
+        <Link
+          href="/docs"
+          className="inline-flex h-10 items-center justify-center rounded-full bg-black px-4 text-base text-white"
+        >
+          Get Started
         </Link>
       </div>
       <div className="mb-40 flex flex-col gap-10">

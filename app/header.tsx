@@ -21,7 +21,7 @@ export function Header({ triggerViewportWidth }: HeaderProps) {
             <SidebarTrigger />
           ) : (
             <a
-              className="inline-flex items-center gap-1 rounded-md bg-transparent border border-zinc-100 text-black px-2 py-1 text-sm transition-colors hover:bg-zinc-100"
+              className="inline-flex items-center gap-1 rounded-md bg-transparent border border-zinc-200 text-black px-2 py-1 text-sm transition-colors hover:bg-zinc-100"
               href="https://github.com/ibelick/prompt-kit"
               target="_blank"
               rel="noopener noreferrer"
