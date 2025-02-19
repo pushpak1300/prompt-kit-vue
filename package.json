@@ -21,6 +21,7 @@
     "@types/mdx": "^2.0.13",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "codehike": "^1.0.4",
     "lucide-react": "^0.475.0",
     "motion": "^12.4.4",
     "next": "15.1.6",
