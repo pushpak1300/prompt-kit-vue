@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "prompt-kit",
   description:
-    "Core building block for LLM apps. High-quality, accessible, and customizable components for AI interfaces.",
+    "Core building block for AI apps. High-quality, accessible, and customizable components for AI interfaces.",
 };
 
 export default function RootLayout({
