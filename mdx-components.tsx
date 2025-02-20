@@ -1,6 +1,9 @@
 import type { MDXComponents } from "mdx/types";
 import { codeToHtml } from "@/lib/shiki";
 import { cn } from "@/lib/utils";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { extractCodeFromFilePath } from "./lib/code";
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
@@ -14,8 +17,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </a>
     ),
-    CodeBlock: async ({ language, code, ...props }) => {
-      const html = await codeToHtml({ code, lang: language });
+    CodeBlock: async ({ language, code, filePath, ...props }) => {
+      const fileContent = filePath ? extractCodeFromFilePath(filePath) : code;
+      const html = await codeToHtml({ code: fileContent, lang: language });
 
       return (
         <div
@@ -25,6 +29,38 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         />
       );
     },
+    Step: ({ className, children, ...props }: React.ComponentProps<"h3">) => (
+      <h3 className={cn("step", className)} data-heading="3" {...props}>
+        {children}
+      </h3>
+    ),
+    Steps: ({ ...props }) => (
+      <div
+        className="steps mb-12 ml-4 border-l pl-8 [counter-reset:step]"
+        {...props}
+      />
+    ),
+    Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => (
+      <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
+    ),
+    TabsList: ({
+      className,
+      ...props
+    }: React.ComponentProps<typeof TabsList>) => (
+      <TabsList className={cn(className)} {...props} />
+    ),
+    TabsTrigger: ({
+      className,
+      ...props
+    }: React.ComponentProps<typeof TabsTrigger>) => (
+      <TabsTrigger className={cn(className)} {...props} />
+    ),
+    TabsContent: ({
+      className,
+      ...props
+    }: React.ComponentProps<typeof TabsContent>) => (
+      <TabsContent className={cn(className)} {...props} />
+    ),
     table: ({ className, ...props }: React.ComponentProps<"table">) => (
       <div className="not-prose relative w-full table-auto overflow-auto rounded-lg border border-zinc-200 text-sm dark:border-zinc-800">
         <table className={cn("w-full", className)} {...props} />
