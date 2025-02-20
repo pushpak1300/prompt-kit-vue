@@ -20,7 +20,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <div
           dangerouslySetInnerHTML={{ __html: html }}
-          className="not-prose bg-background rounded-md border border-zinc-200 p-2 text-[13px]"
+          className="not-prose bg-background rounded-md border border-zinc-200 p-2 text-[13px] overflow-scroll"
           {...props}
         />
       );

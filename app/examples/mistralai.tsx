@@ -64,7 +64,7 @@ export function PromptInputMistralAI() {
 
           <Button
             variant="ghost"
-            className="flex h-8 w-auto items-center justify-center gap-1.5 rounded bg-transparent px-2 py-0 text-[12px] font-normal text-[hsl(240_5%_65%)] ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground [&_svg]:size-4"
+            className="hidden h-8 w-auto items-center justify-center gap-1.5 rounded bg-transparent px-2 py-0 text-[12px] font-normal text-[hsl(240_5%_65%)] ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground [&_svg]:size-4 sm:flex"
           >
             <Image />
             Image generation

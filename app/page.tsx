@@ -92,8 +92,8 @@ export default function Home() {
           Get Started
         </Link>
       </div>
-      <div className="mb-40 flex flex-col gap-10">
-        <div className="flex min-h-[350px] w-full items-end rounded border border-zinc-200 p-8">
+      <div className="mb-40 flex flex-col gap-10 -mx-6 sm:mx-0">
+        <div className="flex min-h-[350px] w-full items-end rounded border border-zinc-200 p-4 sm:p-8 ">
           <AnimatePresence initial={false} mode="wait">
             <motion.div
               key={activeTab.label}

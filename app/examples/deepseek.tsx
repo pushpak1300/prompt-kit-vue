@@ -39,7 +39,7 @@ export function PromptInputDeepSeek() {
         rows={2}
       />
       <PromptInputActions className="flex h-[32px] items-center justify-between gap-2">
-        <div className="flex items-center gap-x-2.5">
+        <div className="flex flex-wrap items-center gap-x-2.5">
           <PromptInputAction
             delayDuration={0}
             className="duration-0 data-[state=closed]:duration-0"
