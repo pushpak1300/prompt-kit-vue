@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LayoutClient } from "./layout.client";
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,8 +25,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isDev = process.env.NODE_ENV === "development";
+
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      {!isDev ? (
+        <Script
+          async
+          src="https://analytics.umami.is/script.js"
+          data-website-id="d96e0c36-2259-4f49-86cf-0f8d296645bd"
+        />
+      ) : null}
       <body
         className={`${inter.className} ${geistMono.variable} font-sans antialiased`}
       >

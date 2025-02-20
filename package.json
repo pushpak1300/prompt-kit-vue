@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:registry": "tsx scripts/registry-build.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
@@ -45,6 +46,7 @@
     "eslint-config-next": "15.1.6",
     "postcss": "^8",
     "tailwindcss": "^4.0.0",
+    "tsx": "^4.19.3",
     "typescript": "^5"
   }
 }

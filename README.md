@@ -1,7 +1,7 @@
 # prompt-kit
 
 **Customizable, high-quality components for AI applications.**  
-Build chat experiences, AI agents, autonomous assistants, and more—quickly and beautifully.
+Build chat experiences, AI agents, autonomous assistants, and more, quickly and beautifully.
 
 ![cover](/app/opengraph-image.jpg)
 
