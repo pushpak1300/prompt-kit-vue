@@ -1,18 +1,19 @@
-"use client";
-import { useState } from "react";
-import { PromptInputChatGPT } from "./examples/chatgpt";
-import { PromptInputMistralAI } from "./examples/mistralai";
-import { PromptInputDeepSeek } from "./examples/deepseek";
+"use client"
+
 import {
   CodeBlock,
   CodeBlockCode,
   CodeBlockGroup,
-} from "@/components/prompt-kit/code-block";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { TextMorph } from "@/components/ui/text-morph";
-import { AnimatedBackground } from "@/components/ui/animated-background";
-import { AnimatePresence, motion } from "motion/react";
+} from "@/components/prompt-kit/code-block"
+import { AnimatedBackground } from "@/components/ui/animated-background"
+import { TextMorph } from "@/components/ui/text-morph"
+import { cn } from "@/lib/utils"
+import { AnimatePresence, motion } from "motion/react"
+import Link from "next/link"
+import { useState } from "react"
+import { PromptInputChatGPT } from "./examples/chatgpt"
+import { PromptInputDeepSeek } from "./examples/deepseek"
+import { PromptInputMistralAI } from "./examples/mistralai"
 
 const TABS = [
   {
@@ -30,7 +31,7 @@ const TABS = [
     component: PromptInputDeepSeek,
     img: "/deepseek_logo.png",
   },
-];
+]
 
 const CODE_SAMPLE = `import {
   PromptInput,
@@ -52,33 +53,33 @@ function PromptInputBasic() {
       </PromptInputActions>
     </PromptInput>
   );
-}`;
+}`
 
 const MOTION_TRANSITION = {
   duration: 0.25,
   type: "spring",
   bounce: 0,
-};
+}
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState(TABS[0]);
-  const [hasCopyLabel, setHasCopyLabel] = useState(false);
+  const [activeTab, setActiveTab] = useState(TABS[0])
+  const [hasCopyLabel, setHasCopyLabel] = useState(false)
 
   const onCopy = () => {
-    navigator.clipboard.writeText(CODE_SAMPLE);
-    setHasCopyLabel(true);
+    navigator.clipboard.writeText(CODE_SAMPLE)
+    setHasCopyLabel(true)
 
     setTimeout(() => {
-      setHasCopyLabel(false);
-    }, 1000);
-  };
+      setHasCopyLabel(false)
+    }, 1000)
+  }
 
   return (
     <>
       <div className="mb-12 flex flex-col items-start">
         <div className="mb-5 flex flex-col gap-1 text-pretty">
           <p className="text-3xl font-[450] tracking-tight text-black">
-            Core building block for AI apps.
+            Core building blocks for AI apps.
           </p>
           <p className="text-3xl font-[450] tracking-tight text-zinc-500">
             High-quality, accessible, and customizable components for AI
@@ -92,8 +93,8 @@ export default function Home() {
           Get Started
         </Link>
       </div>
-      <div className="mb-40 flex flex-col gap-10 -mx-6 sm:mx-0">
-        <div className="flex min-h-[350px] w-full items-end rounded border border-zinc-200 p-4 sm:p-8 ">
+      <div className="-mx-6 mb-40 flex flex-col gap-10 sm:mx-0">
+        <div className="flex min-h-[350px] w-full items-end rounded border border-zinc-200 p-4 sm:p-8">
           <AnimatePresence initial={false} mode="wait">
             <motion.div
               key={activeTab.label}
@@ -115,11 +116,9 @@ export default function Home() {
             )}
             transition={MOTION_TRANSITION}
             onValueChange={(newActiveId) => {
-              const newActiveTab = TABS.find(
-                (tab) => tab.label === newActiveId
-              );
+              const newActiveTab = TABS.find((tab) => tab.label === newActiveId)
               if (newActiveTab) {
-                setActiveTab(newActiveTab);
+                setActiveTab(newActiveTab)
               }
             }}
           >
@@ -128,7 +127,7 @@ export default function Home() {
                 key={tab.label}
                 data-id={tab.label}
                 className={cn(
-                  "rounded-md px-2 py-1 text-sm text-zinc-500 hover:text-black active:scale-[0.98] transition-all",
+                  "rounded-md px-2 py-1 text-sm text-zinc-500 transition-all hover:text-black active:scale-[0.98]",
                   "group",
                   activeTab.label === tab.label && "text-black"
                 )}
@@ -144,7 +143,7 @@ export default function Home() {
         </div>
       </div>
       <CodeBlock className="relative mb-20 rounded" language="tsx">
-        <CodeBlockGroup className="absolute right-4 top-4">
+        <CodeBlockGroup className="absolute top-4 right-4">
           <button
             onClick={onCopy}
             className="rounded-[2px] border px-2 py-1 text-xs hover:bg-zinc-100 dark:hover:bg-zinc-800"
@@ -155,5 +154,5 @@ export default function Home() {
         <CodeBlockCode code={CODE_SAMPLE} />
       </CodeBlock>
     </>
-  );
+  )
 }

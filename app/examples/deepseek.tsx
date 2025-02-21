@@ -1,29 +1,30 @@
-"use client";
-import { useState } from "react";
+"use client"
+
 import {
   PromptInput,
-  PromptInputTextarea,
   PromptInputAction,
   PromptInputActions,
-} from "@/components/prompt-kit/prompt-input";
-import { ArrowUp, Atom, Globe, Paperclip, Square } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Arrow } from "@radix-ui/react-tooltip";
+  PromptInputTextarea,
+} from "@/components/prompt-kit/prompt-input"
+import { Button } from "@/components/ui/button"
+import { Arrow } from "@radix-ui/react-tooltip"
+import { ArrowUp, Atom, Globe, Paperclip, Square } from "lucide-react"
+import { useState } from "react"
 
 export function PromptInputDeepSeek() {
-  const [input, setInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [input, setInput] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = () => {
-    setIsLoading(true);
+    setIsLoading(true)
     setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  };
+      setIsLoading(false)
+    }, 2000)
+  }
 
   const handleValueChange = (value: string) => {
-    setInput(value);
-  };
+    setInput(value)
+  }
 
   return (
     <PromptInput
@@ -46,7 +47,7 @@ export function PromptInputDeepSeek() {
             tooltip={
               <div className="bg-black">
                 <Arrow className="fill-black" />
-                <span className="text-xs font-normal leading-none text-white">
+                <span className="text-xs leading-none font-normal text-white">
                   Use DeepThink (R1) to solve reasoning problems
                 </span>
               </div>
@@ -66,7 +67,7 @@ export function PromptInputDeepSeek() {
             tooltip={
               <div className="bg-black">
                 <Arrow className="fill-black" />
-                <span className="text-xs font-normal leading-none text-white">
+                <span className="text-xs leading-none font-normal text-white">
                   Search the web when necessary
                 </span>
               </div>
@@ -88,7 +89,7 @@ export function PromptInputDeepSeek() {
             tooltip={
               <div className="bg-black">
                 <Arrow className="fill-black" />
-                <span className="text-xs font-normal leading-none text-white">
+                <span className="text-xs leading-none font-normal text-white">
                   Attach files
                 </span>
               </div>
@@ -108,7 +109,7 @@ export function PromptInputDeepSeek() {
             tooltip={
               <div className="bg-black">
                 <Arrow className="fill-black duration-0" />
-                <span className="text-xs font-normal leading-none text-white">
+                <span className="text-xs leading-none font-normal text-white">
                   {isLoading ? "Stop generation" : "Send message"}
                 </span>
               </div>
@@ -127,5 +128,5 @@ export function PromptInputDeepSeek() {
         </div>
       </PromptInputActions>
     </PromptInput>
-  );
+  )
 }

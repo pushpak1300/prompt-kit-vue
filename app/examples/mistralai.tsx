@@ -1,10 +1,12 @@
-"use client";
-import { useState } from "react";
+"use client"
+
 import {
   PromptInput,
-  PromptInputTextarea,
   PromptInputAction,
-} from "@/components/prompt-kit/prompt-input";
+  PromptInputTextarea,
+} from "@/components/prompt-kit/prompt-input"
+import { Button } from "@/components/ui/button"
+import { Arrow } from "@radix-ui/react-tooltip"
 import {
   ArrowRight,
   FileText,
@@ -12,24 +14,23 @@ import {
   Image,
   Paperclip,
   Square,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Arrow } from "@radix-ui/react-tooltip";
+} from "lucide-react"
+import { useState } from "react"
 
 export function PromptInputMistralAI() {
-  const [input, setInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [input, setInput] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = () => {
-    setIsLoading(true);
+    setIsLoading(true)
     setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  };
+      setIsLoading(false)
+    }, 2000)
+  }
 
   const handleValueChange = (value: string) => {
-    setInput(value);
-  };
+    setInput(value)
+  }
 
   return (
     <PromptInput
@@ -37,7 +38,7 @@ export function PromptInputMistralAI() {
       onValueChange={handleValueChange}
       isLoading={isLoading}
       onSubmit={handleSubmit}
-      className="relative w-full max-w-(--breakpoint-md) rounded border border-[#e4e4e7] bg-background p-1.5 shadow-lg"
+      className="bg-background relative w-full max-w-(--breakpoint-md) rounded border border-[#e4e4e7] p-1.5 shadow-lg"
     >
       <PromptInputTextarea
         disableAutosize
@@ -48,7 +49,7 @@ export function PromptInputMistralAI() {
         <div className="flex gap-1 px-0.5 text-xs">
           <Button
             variant="ghost"
-            className="flex h-8 w-auto items-center justify-center gap-1.5 rounded bg-transparent px-2 py-0 text-[12px] font-normal text-[hsl(240_5%_65%)] ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground [&_svg]:size-4"
+            className="ring-offset-background hover:bg-muted hover:text-muted-foreground flex h-8 w-auto items-center justify-center gap-1.5 rounded bg-transparent px-2 py-0 text-[12px] font-normal text-[hsl(240_5%_65%)] transition-colors [&_svg]:size-4"
           >
             <FileText />
             Canvas
@@ -56,7 +57,7 @@ export function PromptInputMistralAI() {
 
           <Button
             variant="ghost"
-            className="flex h-8 w-auto items-center justify-center gap-1.5 rounded bg-transparent px-2 py-0 text-[12px] font-normal text-[hsl(240_5%_65%)] ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground [&_svg]:size-4"
+            className="ring-offset-background hover:bg-muted hover:text-muted-foreground flex h-8 w-auto items-center justify-center gap-1.5 rounded bg-transparent px-2 py-0 text-[12px] font-normal text-[hsl(240_5%_65%)] transition-colors [&_svg]:size-4"
           >
             <Globe />
             Web search
@@ -64,7 +65,7 @@ export function PromptInputMistralAI() {
 
           <Button
             variant="ghost"
-            className="hidden h-8 w-auto items-center justify-center gap-1.5 rounded bg-transparent px-2 py-0 text-[12px] font-normal text-[hsl(240_5%_65%)] ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground [&_svg]:size-4 sm:flex"
+            className="ring-offset-background hover:bg-muted hover:text-muted-foreground hidden h-8 w-auto items-center justify-center gap-1.5 rounded bg-transparent px-2 py-0 text-[12px] font-normal text-[hsl(240_5%_65%)] transition-colors sm:flex [&_svg]:size-4"
           >
             <Image />
             Image generation
@@ -77,7 +78,7 @@ export function PromptInputMistralAI() {
             tooltip={
               <div className="bg-black">
                 <Arrow className="fill-black" />
-                <span className="text-xs font-normal leading-none text-white">
+                <span className="text-xs leading-none font-normal text-white">
                   Drop PDFs or images here
                 </span>
               </div>
@@ -107,5 +108,5 @@ export function PromptInputMistralAI() {
         </div>
       </div>
     </PromptInput>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import path from "path";
-import { Schema } from "./registry-schema";
+import path from "path"
+import { Schema } from "./registry-schema"
 
 type ComponentDefinition = Partial<
   Pick<
@@ -11,10 +11,10 @@ type ComponentDefinition = Partial<
     | "tailwind"
   >
 > & {
-  name: string;
-  description: string;
-  path: string;
-};
+  name: string
+  description: string
+  path: string
+}
 
 export const components: ComponentDefinition[] = [
   {
@@ -24,4 +24,4 @@ export const components: ComponentDefinition[] = [
     path: path.join(__dirname, "../components/prompt-kit/prompt-input.tsx"),
     registryDependencies: ["textarea", "tooltip"],
   },
-];
+]

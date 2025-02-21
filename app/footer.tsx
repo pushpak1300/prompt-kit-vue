@@ -1,11 +1,11 @@
-import { getNavigation } from "./routes";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { getNavigation } from "./routes"
 
 export function Footer() {
-  const pathname = usePathname();
-  const navigation = getNavigation(pathname);
+  const pathname = usePathname()
+  const navigation = getNavigation(pathname)
 
   return (
     <div className="flex justify-between pt-12 pb-4">
@@ -30,5 +30,5 @@ export function Footer() {
         </Link>
       )}
     </div>
-  );
+  )
 }

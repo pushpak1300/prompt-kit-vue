@@ -1,21 +1,21 @@
-import fs from "fs";
-import path from "path";
-import { Schema } from "./registry-schema";
-import { components } from "./registry-components";
+import fs from "fs"
+import path from "path"
+import { components } from "./registry-components"
+import { Schema } from "./registry-schema"
 
-const registryComponents = path.join(__dirname, "../public/c");
-const registryHooks = path.join(__dirname, "../public/h");
+const registryComponents = path.join(__dirname, "../public/c")
+const registryHooks = path.join(__dirname, "../public/h")
 
 if (!fs.existsSync(registryComponents)) {
-  fs.mkdirSync(registryComponents);
+  fs.mkdirSync(registryComponents)
 }
 
 if (!fs.existsSync(registryHooks)) {
-  fs.mkdirSync(registryHooks);
+  fs.mkdirSync(registryHooks)
 }
 
 for (const component of components) {
-  const content = fs.readFileSync(component.path, "utf8");
+  const content = fs.readFileSync(component.path, "utf8")
 
   const schema = {
     name: component.name,
@@ -36,10 +36,10 @@ for (const component of components) {
         type: "registry:ui",
       },
     ],
-  } satisfies Schema;
+  } satisfies Schema
 
   fs.writeFileSync(
     path.join(registryComponents, `${component.name}.json`),
     JSON.stringify(schema, null, 2)
-  );
+  )
 }

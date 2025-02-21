@@ -1,25 +1,25 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import { RotateCw } from "lucide-react";
-import { cloneElement, useState } from "react";
+import { cn } from "@/lib/utils"
+import { RotateCw } from "lucide-react"
+import { cloneElement, useState } from "react"
 
 type ComponentPreviewProps = {
-  component: React.ReactElement;
-  hasReTrigger?: boolean;
-  className?: string;
-};
+  component: React.ReactElement
+  hasReTrigger?: boolean
+  className?: string
+}
 
 export default function ComponentPreview({
   component,
   hasReTrigger = false,
   className,
 }: ComponentPreviewProps) {
-  const [reTriggerKey, setReTriggerKey] = useState<number>(Date.now());
+  const [reTriggerKey, setReTriggerKey] = useState<number>(Date.now())
 
   const reTrigger = () => {
-    setReTriggerKey(Date.now());
-  };
+    setReTriggerKey(Date.now())
+  }
 
   return (
     <div
@@ -30,7 +30,7 @@ export default function ComponentPreview({
     >
       {hasReTrigger && (
         <div
-          className="absolute right-4 top-3 cursor-pointer"
+          className="absolute top-3 right-4 cursor-pointer"
           onClick={reTrigger}
         >
           <RotateCw className="h-4 w-4 text-zinc-500" />
@@ -40,5 +40,5 @@ export default function ComponentPreview({
         ? cloneElement(component, { key: reTriggerKey })
         : component}
     </div>
-  );
+  )
 }

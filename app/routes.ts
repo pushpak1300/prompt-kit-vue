@@ -1,8 +1,8 @@
 export type Route = {
-  path: string;
-  label: string;
-  order: number;
-};
+  path: string
+  label: string
+  order: number
+}
 
 export const routes: Route[] = [
   {
@@ -25,16 +25,16 @@ export const routes: Route[] = [
     label: "Prompt Input",
     order: 3,
   },
-];
+]
 
 export function getNavigation(currentPath: string) {
-  const currentIndex = routes.findIndex((route) => route.path === currentPath);
+  const currentIndex = routes.findIndex((route) => route.path === currentPath)
 
-  if (currentIndex === -1) return null;
+  if (currentIndex === -1) return null
 
   return {
     prev: currentIndex > 0 ? routes[currentIndex - 1] : null,
     current: routes[currentIndex],
     next: currentIndex < routes.length - 1 ? routes[currentIndex + 1] : null,
-  };
+  }
 }

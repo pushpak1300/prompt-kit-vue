@@ -1,26 +1,25 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import * as TabsPrimitive from "@radix-ui/react-tabs";
+import { cn } from "@/lib/utils"
+import * as TabsPrimitive from "@radix-ui/react-tabs"
+import { motion } from "motion/react"
+import * as React from "react"
 
-import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+const Tabs = TabsPrimitive.Root
 
-const Tabs = TabsPrimitive.Root;
-
-const TabsContext = React.createContext<string>("");
+const TabsContext = React.createContext<string>("")
 
 const TabsRoot = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>
 >(({ ...props }, ref) => {
-  const uniqueId = React.useId();
+  const uniqueId = React.useId()
   return (
     <TabsContext.Provider value={uniqueId}>
       <Tabs ref={ref} {...props} />
     </TabsContext.Provider>
-  );
-});
+  )
+})
 
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
@@ -34,37 +33,37 @@ const TabsList = React.forwardRef<
     )}
     {...props}
   />
-));
-TabsList.displayName = TabsPrimitive.List.displayName;
+))
+TabsList.displayName = TabsPrimitive.List.displayName
 
 const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => {
-  const triggerRef = React.useRef<HTMLButtonElement>(null);
-  const [isActive, setIsActive] = React.useState(false);
-  const tabsId = React.useContext(TabsContext);
+  const triggerRef = React.useRef<HTMLButtonElement>(null)
+  const [isActive, setIsActive] = React.useState(false)
+  const tabsId = React.useContext(TabsContext)
 
   React.useEffect(() => {
-    const element = triggerRef.current;
+    const element = triggerRef.current
     if (element) {
-      setIsActive(element.dataset.state === "active");
+      setIsActive(element.dataset.state === "active")
 
       const observer = new MutationObserver(() => {
-        setIsActive(element.dataset.state === "active");
-      });
+        setIsActive(element.dataset.state === "active")
+      })
 
-      observer.observe(element, { attributes: true });
+      observer.observe(element, { attributes: true })
 
-      return () => observer.disconnect();
+      return () => observer.disconnect()
     }
-  }, []);
+  }, [])
 
   return (
     <TabsPrimitive.Trigger
       ref={triggerRef}
       className={cn(
-        "ring-offset-background focus-visible:ring-ring group relative inline-flex h-10 items-center justify-center whitespace-nowrap rounded-none bg-transparent px-4 py-1 pb-3 pt-2 text-sm font-medium text-zinc-500 transition-none focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-zinc-950 dark:text-zinc-500 dark:data-[state=active]:text-white",
+        "ring-offset-background focus-visible:ring-ring group relative inline-flex h-10 items-center justify-center rounded-none bg-transparent px-4 py-1 pt-2 pb-3 text-sm font-medium whitespace-nowrap text-zinc-500 transition-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-zinc-950 dark:text-zinc-500 dark:data-[state=active]:text-white",
         className
       )}
       {...props}
@@ -86,9 +85,9 @@ const TabsTrigger = React.forwardRef<
       )}
       {children}
     </TabsPrimitive.Trigger>
-  );
-});
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+  )
+})
+TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
 
 const TabsContent = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Content>,
@@ -97,12 +96,12 @@ const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      "focus-visible:ring-ring relative mt-2 rounded-md ring-offset-blue-50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2",
+      "focus-visible:ring-ring relative mt-2 rounded-md ring-offset-blue-50 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden",
       className
     )}
     {...props}
   />
-));
-TabsContent.displayName = TabsPrimitive.Content.displayName;
+))
+TabsContent.displayName = TabsPrimitive.Content.displayName
 
-export { TabsRoot as Tabs, TabsList, TabsTrigger, TabsContent };
+export { TabsRoot as Tabs, TabsList, TabsTrigger, TabsContent }

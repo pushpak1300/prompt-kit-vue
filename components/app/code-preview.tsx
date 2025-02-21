@@ -1,39 +1,40 @@
-"use client";
-import { Check, Copy } from "lucide-react";
-import { useState } from "react";
+"use client"
+
+import { Check, Copy } from "lucide-react"
+import { useState } from "react"
 
 type CodePreviewProps = {
-  code: string;
-  children: React.ReactNode;
-};
+  code: string
+  children: React.ReactNode
+}
 
 export default function CodePreview({ code, children }: CodePreviewProps) {
-  const [hasCheckIcon, setHasCheckIcon] = useState(false);
+  const [hasCheckIcon, setHasCheckIcon] = useState(false)
 
   const onCopy = () => {
-    navigator.clipboard.writeText(code);
-    setHasCheckIcon(true);
+    navigator.clipboard.writeText(code)
+    setHasCheckIcon(true)
 
     setTimeout(() => {
-      setHasCheckIcon(false);
-    }, 1000);
-  };
+      setHasCheckIcon(false)
+    }, 1000)
+  }
 
   return (
     <div className="relative rounded-md border border-zinc-200">
       <div
-        className="absolute right-4 top-4 cursor-pointer bg-transparent p-2"
+        className="absolute top-4 right-4 cursor-pointer bg-transparent p-2"
         onClick={onCopy}
       >
         <div
-          className={`absolute inset-0  transform transition-all duration-300  ${
+          className={`absolute inset-0 transform transition-all duration-300 ${
             hasCheckIcon ? "scale-0 opacity-0" : "scale-100 opacity-100"
           }`}
         >
           <Copy className="h-4 w-4 text-zinc-400" />
         </div>
         <div
-          className={`absolute inset-0 transform transition-all duration-300  ${
+          className={`absolute inset-0 transform transition-all duration-300 ${
             hasCheckIcon ? "scale-100 opacity-100" : "scale-0 opacity-0"
           }`}
         >
@@ -44,5 +45,5 @@ export default function CodePreview({ code, children }: CodePreviewProps) {
         {children}
       </div>
     </div>
-  );
+  )
 }

@@ -181,7 +181,7 @@ code {
 
   &:before {
     @apply absolute inline-flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 bg-white text-center -indent-px font-mono text-base font-medium dark:border-zinc-800 dark:bg-zinc-950;
-    @apply ml-[-50px] mt-[-4px];
+    @apply mt-[-4px] ml-[-50px];
     content: counter(step);
   }
 }

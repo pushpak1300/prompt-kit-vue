@@ -1,20 +1,21 @@
-"use client";
-import { Header } from "./header";
+"use client"
+
 import {
-  SidebarProvider,
   Sidebar,
   SidebarContent,
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuItem,
   SidebarMenuButton,
-} from "@/components/ui/sidebar";
-import { Footer } from "./footer";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+  SidebarMenuItem,
+  SidebarProvider,
+} from "@/components/ui/sidebar"
+import { cn } from "@/lib/utils"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Footer } from "./footer"
+import { Header } from "./header"
 
 const coreMenuItems = [
   {
@@ -25,14 +26,14 @@ const coreMenuItems = [
     title: "Installation",
     url: "/docs/installation",
   },
-];
+]
 
 const componentsMenuItems = [
   {
     title: "Prompt Input",
     url: "/docs/prompt-input",
   },
-];
+]
 
 const socialMenuItems = [
   {
@@ -43,15 +44,15 @@ const socialMenuItems = [
     title: "X (Twitter)",
     url: "https://twitter.com/ibelick",
   },
-];
+]
 
 function AppSidebar() {
-  const currentPath = usePathname();
+  const currentPath = usePathname()
 
   return (
     <Sidebar className="h-full border-none bg-white shadow-none">
       {/* @todo: need to be viewport no sm: */}
-      <SidebarContent className="border-none bg-white pl-0 pt-0 min-[1184px]:pl-20 min-[1184px]:pt-[7.4rem]">
+      <SidebarContent className="border-none bg-white pt-0 pl-0 min-[1184px]:pt-[7.4rem] min-[1184px]:pl-20">
         <SidebarGroup className="border-none bg-white">
           <SidebarGroupLabel className="text-lg min-[1184px]:text-sm">
             Core
@@ -59,7 +60,7 @@ function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {coreMenuItems.map((item) => {
-                const isActive = currentPath === item.url;
+                const isActive = currentPath === item.url
 
                 return (
                   <SidebarMenuItem key={item.title}>
@@ -79,7 +80,7 @@ function AppSidebar() {
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
-                );
+                )
               })}
             </SidebarMenu>
           </SidebarGroupContent>
@@ -89,7 +90,7 @@ function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {componentsMenuItems.map((item) => {
-                const isActive = currentPath === item.url;
+                const isActive = currentPath === item.url
 
                 return (
                   <SidebarMenuItem key={item.title}>
@@ -109,7 +110,7 @@ function AppSidebar() {
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
-                );
+                )
               })}
             </SidebarMenu>
           </SidebarGroupContent>
@@ -135,18 +136,18 @@ function AppSidebar() {
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
-                );
+                )
               })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  );
+  )
 }
 
 export function LayoutClient({ children }: { children: React.ReactNode }) {
-  const MOBILE_SIDEBAR_VIEWPORT_THRESHOLD = 1184;
+  const MOBILE_SIDEBAR_VIEWPORT_THRESHOLD = 1184
 
   return (
     <SidebarProvider
@@ -164,5 +165,5 @@ export function LayoutClient({ children }: { children: React.ReactNode }) {
         <AppSidebar />
       </div>
     </SidebarProvider>
-  );
+  )
 }

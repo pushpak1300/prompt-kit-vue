@@ -1,12 +1,12 @@
-import createMDX from "@next/mdx";
-import * as v1 from "codehike/mdx";
-import { remarkCodeHike } from "codehike/mdx";
-import remarkGfm from "remark-gfm";
+import createMDX from "@next/mdx"
+import * as v1 from "codehike/mdx"
+import { remarkCodeHike } from "codehike/mdx"
+import remarkGfm from "remark-gfm"
 
 /** @type {import('codehike/mdx').CodeHikeConfig} */
 const chConfig = {
   syntaxHighlighting: { theme: "github-light" },
-};
+}
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -16,7 +16,7 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-};
+}
 
 const withMDX = createMDX({
   options: {
@@ -27,7 +27,7 @@ const withMDX = createMDX({
     ],
     recmaPlugins: [[v1.recmaCodeHike, chConfig]],
   },
-});
+})
 
 // Merge MDX config with Next.js config
-export default withMDX(nextConfig);
+export default withMDX(nextConfig)

@@ -1,15 +1,15 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import CodePreview from "./code-preview";
-import { CodeRenderer } from "./code-renderer";
-import ComponentPreview from "./component-preview";
-import { extractCodeFromFilePath } from "@/lib/code";
+import { extractCodeFromFilePath } from "@/lib/code"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs"
+import CodePreview from "./code-preview"
+import { CodeRenderer } from "./code-renderer"
+import ComponentPreview from "./component-preview"
 
 type ComponentCodePreview = {
-  component: React.ReactElement;
-  filePath: string;
-  hasReTrigger?: boolean;
-  classNameComponentContainer?: string;
-};
+  component: React.ReactElement
+  filePath: string
+  hasReTrigger?: boolean
+  classNameComponentContainer?: string
+}
 
 export default function ComponentCodePreview({
   component,
@@ -17,7 +17,7 @@ export default function ComponentCodePreview({
   hasReTrigger,
   classNameComponentContainer,
 }: ComponentCodePreview) {
-  const fileContent = extractCodeFromFilePath(filePath);
+  const fileContent = extractCodeFromFilePath(filePath)
 
   return (
     <div className="not-prose relative z-0 flex items-center justify-between pb-3">
@@ -40,5 +40,5 @@ export default function ComponentCodePreview({
         </TabsContent>
       </Tabs>
     </div>
-  );
+  )
 }

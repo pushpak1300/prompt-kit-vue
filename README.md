@@ -25,7 +25,7 @@ npx shadcn@latest add prompt-kit/[component]
 After installation, import and start using the components in your project:
 
 ```tsx
-import { PromptInput } from "@/components/ui/prompt-input";
+import { PromptInput } from "@/components/ui/prompt-input"
 ```
 
 ## Available Components

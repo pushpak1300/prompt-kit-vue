@@ -1,8 +1,8 @@
-import type { MDXComponents } from "mdx/types";
-import { codeToHtml } from "@/lib/shiki";
-import { cn } from "@/lib/utils";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { extractCodeFromFilePath } from "./lib/code";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { codeToHtml } from "@/lib/shiki"
+import { cn } from "@/lib/utils"
+import type { MDXComponents } from "mdx/types"
+import { extractCodeFromFilePath } from "./lib/code"
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -18,16 +18,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </a>
     ),
     CodeBlock: async ({ language, code, filePath, ...props }) => {
-      const fileContent = filePath ? extractCodeFromFilePath(filePath) : code;
-      const html = await codeToHtml({ code: fileContent, lang: language });
+      const fileContent = filePath ? extractCodeFromFilePath(filePath) : code
+      const html = await codeToHtml({ code: fileContent, lang: language })
 
       return (
         <div
           dangerouslySetInnerHTML={{ __html: html }}
-          className="not-prose bg-background rounded-md border border-zinc-200 p-2 text-[13px] overflow-scroll"
+          className="not-prose bg-background overflow-scroll rounded-md border border-zinc-200 p-2 text-[13px]"
           {...props}
         />
-      );
+      )
     },
     Step: ({ className, children, ...props }: React.ComponentProps<"h3">) => (
       <h3 className={cn("step", className)} data-heading="3" {...props}>
@@ -99,5 +99,5 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...props}
       />
     ),
-  };
+  }
 }

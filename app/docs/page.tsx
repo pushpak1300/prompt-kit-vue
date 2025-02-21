@@ -1,5 +1,5 @@
-import IntroductionPage from "./introduction/page.mdx";
+import IntroductionPage from "./introduction/page.mdx"
 
 export default function Docs() {
-  return <IntroductionPage />;
+  return <IntroductionPage />
 }

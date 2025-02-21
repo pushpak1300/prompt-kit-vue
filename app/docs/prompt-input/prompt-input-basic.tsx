@@ -1,28 +1,29 @@
-"use client";
-import { useState } from "react";
+"use client"
+
 import {
   PromptInput,
-  PromptInputTextarea,
   PromptInputAction,
   PromptInputActions,
-} from "@/components/prompt-kit/prompt-input";
-import { ArrowUp, Square } from "lucide-react";
-import { Button } from "@/components/ui/button";
+  PromptInputTextarea,
+} from "@/components/prompt-kit/prompt-input"
+import { Button } from "@/components/ui/button"
+import { ArrowUp, Square } from "lucide-react"
+import { useState } from "react"
 
 export function PromptInputBasic() {
-  const [input, setInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [input, setInput] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = () => {
-    setIsLoading(true);
+    setIsLoading(true)
     setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  };
+      setIsLoading(false)
+    }, 2000)
+  }
 
   const handleValueChange = (value: string) => {
-    setInput(value);
-  };
+    setInput(value)
+  }
 
   return (
     <PromptInput
@@ -52,5 +53,5 @@ export function PromptInputBasic() {
         </PromptInputAction>
       </PromptInputActions>
     </PromptInput>
-  );
+  )
 }

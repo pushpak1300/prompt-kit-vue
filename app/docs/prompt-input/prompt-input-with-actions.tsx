@@ -1,40 +1,41 @@
-"use client";
-import { useState } from "react";
+"use client"
+
 import {
   PromptInput,
-  PromptInputTextarea,
   PromptInputAction,
   PromptInputActions,
-} from "@/components/prompt-kit/prompt-input";
-import { ArrowUp, Square, Paperclip, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+  PromptInputTextarea,
+} from "@/components/prompt-kit/prompt-input"
+import { Button } from "@/components/ui/button"
+import { ArrowUp, Paperclip, Square, X } from "lucide-react"
+import { useState } from "react"
 
 export function PromptInputWithActions() {
-  const [input, setInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [files, setFiles] = useState<File[]>([]);
+  const [input, setInput] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+  const [files, setFiles] = useState<File[]>([])
 
   const handleSubmit = () => {
     if (input.trim() || files.length > 0) {
-      setIsLoading(true);
+      setIsLoading(true)
       setTimeout(() => {
-        setIsLoading(false);
-        setInput("");
-        setFiles([]);
-      }, 2000);
+        setIsLoading(false)
+        setInput("")
+        setFiles([])
+      }, 2000)
     }
-  };
+  }
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      const newFiles = Array.from(event.target.files);
-      setFiles((prev) => [...prev, ...newFiles]);
+      const newFiles = Array.from(event.target.files)
+      setFiles((prev) => [...prev, ...newFiles])
     }
-  };
+  }
 
   const handleRemoveFile = (index: number) => {
-    setFiles((prev) => prev.filter((_, i) => i !== index));
-  };
+    setFiles((prev) => prev.filter((_, i) => i !== index))
+  }
 
   return (
     <PromptInput
@@ -49,13 +50,13 @@ export function PromptInputWithActions() {
           {files.map((file, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 rounded-lg bg-secondary px-3 py-2 text-sm"
+              className="bg-secondary flex items-center gap-2 rounded-lg px-3 py-2 text-sm"
             >
               <Paperclip className="size-4" />
               <span className="max-w-[120px] truncate">{file.name}</span>
               <button
                 onClick={() => handleRemoveFile(index)}
-                className="rounded-full p-1 hover:bg-secondary/50"
+                className="hover:bg-secondary/50 rounded-full p-1"
               >
                 <X className="size-4" />
               </button>
@@ -70,7 +71,7 @@ export function PromptInputWithActions() {
         <PromptInputAction tooltip="Attach files">
           <label
             htmlFor="file-upload"
-            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-2xl hover:bg-secondary-foreground/10"
+            className="hover:bg-secondary-foreground/10 flex h-8 w-8 cursor-pointer items-center justify-center rounded-2xl"
           >
             <input
               type="file"
@@ -79,7 +80,7 @@ export function PromptInputWithActions() {
               className="hidden"
               id="file-upload"
             />
-            <Paperclip className="size-5 text-primary" />
+            <Paperclip className="text-primary size-5" />
           </label>
         </PromptInputAction>
 
@@ -101,5 +102,5 @@ export function PromptInputWithActions() {
         </PromptInputAction>
       </PromptInputActions>
     </PromptInput>
-  );
+  )
 }
