@@ -12,6 +12,8 @@ import { useRef, useState } from "react"
 
 export function ChatWithCustomScroll() {
   const [autoScroll, setAutoScroll] = useState(true)
+  const [isStreaming, setIsStreaming] = useState(false)
+  const chatContainerRef = useRef<HTMLDivElement>(null)
 
   const [messages, setMessages] = useState([
     {
@@ -39,6 +41,9 @@ export function ChatWithCustomScroll() {
   ])
 
   const addMessage = () => {
+    setIsStreaming(true);
+    
+    // Add a new message
     setMessages([
       ...messages,
       {
@@ -51,6 +56,11 @@ export function ChatWithCustomScroll() {
             : "Thanks for the explanation! Could you tell me more about grid areas?",
       },
     ])
+    
+    // Simulate streaming by setting isStreaming to false after a delay
+    setTimeout(() => {
+      setIsStreaming(false);
+    }, 500);
   }
 
   return (
@@ -76,7 +86,11 @@ export function ChatWithCustomScroll() {
         </div>
       </div>
 
-      <ChatContainer className="flex-1 space-y-4 p-4" autoScroll={autoScroll}>
+      <ChatContainer 
+        className="flex-1 space-y-4 p-4" 
+        autoScroll={autoScroll}
+        ref={chatContainerRef}
+      >
         {messages.map((message) => {
           const isAssistant = message.role === "assistant"
 

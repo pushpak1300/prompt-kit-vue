@@ -74,16 +74,18 @@ A chat container that demonstrates text streaming with automatic scrolling. Clic
 | scrollToRef | React.RefObject\<HTMLDivElement\>      |         | Optional custom reference for scroll target                 |
 | ...props    | React.HTMLAttributes\<HTMLDivElement\> |         | All other div props                                         |
 
-## Smart Auto-Scroll Behavior
 
-The ChatContainer component implements intelligent auto-scroll behavior that:
+## Auto-Scroll Behavior
 
-1. Automatically scrolls to the bottom when new content is added
-2. Disables auto-scrolling when the user manually scrolls up
-3. Re-enables auto-scrolling when the user scrolls back to the bottom
-4. Handles both mouse wheel and touch interactions
+The component implements sophisticated scrolling logic to provide a natural user experience:
 
-This behavior is particularly useful for chat applications where you want to show new messages as they arrive, but don't want to interrupt the user if they're reading previous messages.
+- **New Messages**: Automatically scrolls to the bottom when new messages are added
+- **Content Updates**: Scrolls to follow streaming content when already at the bottom
+- **User Control**: 
+  - Temporarily disables auto-scrolling when users scroll up or use mouse wheel up
+  - Maintains scroll position during content updates when user has scrolled up
+  - Supports touch interactions by tracking touch start/move/end events
+- **Resume Auto-Scroll**: Re-enables auto-scrolling when users scroll back to the bottom
 
 ## Using with ScrollButton
 

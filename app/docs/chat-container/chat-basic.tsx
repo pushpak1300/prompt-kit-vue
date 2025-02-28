@@ -39,6 +39,7 @@ export function ChatBasic() {
   const [isStreaming, setIsStreaming] = useState(false)
   const streamIntervalRef = useRef<NodeJS.Timeout | null>(null)
   const streamContentRef = useRef("")
+  const chatContainerRef = useRef<HTMLDivElement>(null)
 
   const streamResponse = () => {
     if (isStreaming) return
@@ -95,7 +96,10 @@ export function ChatBasic() {
         </Button>
       </div>
 
-      <ChatContainer className="flex-1 space-y-4 p-4">
+      <ChatContainer 
+        className="flex-1 space-y-4 p-4" 
+        ref={chatContainerRef}
+      >
         {messages.map((message) => {
           const isAssistant = message.role === "assistant"
 
