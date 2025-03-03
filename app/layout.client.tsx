@@ -6,6 +6,7 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -47,7 +48,7 @@ const socialMenuItems = [
 
 function AppSidebar() {
   const currentPath = usePathname()
-  const { setOpenMobile } = useSidebar()
+  const { setOpenMobile, isMdView } = useSidebar()
   const pathname = usePathname()
 
   useEffect(() => {
@@ -55,10 +56,24 @@ function AppSidebar() {
   }, [pathname, setOpenMobile])
 
   return (
-    <Sidebar className="h-full border-none bg-white shadow-none">
-      <SidebarContent className="border-none bg-white pt-0 pl-0 min-[1184px]:pt-[7.4rem] min-[1184px]:pl-20">
+    <Sidebar className="h-full border-none shadow-none">
+      <SidebarContent
+        className={cn(
+          "border-none bg-white pt-0 pl-0 md:pt-[8.2rem] md:pl-7 lg:pl-20"
+        )}
+      >
+        <SidebarHeader className="hidden md:block">
+          <Link href="/">
+            <h1 className="px-2 text-sm">prompt-kit</h1>
+          </Link>
+        </SidebarHeader>
         <SidebarGroup className="border-none bg-white">
-          <SidebarGroupLabel className="text-lg min-[1184px]:text-sm">
+          <SidebarGroupLabel
+            className={cn(
+              "text-lg min-[640px]:text-sm",
+              isMdView && "md:text-xs lg:text-sm"
+            )}
+          >
             Core
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -73,12 +88,16 @@ function AppSidebar() {
                       className={cn(
                         isActive &&
                           "bg-sidebar-accent text-sidebar-accent-foreground",
-                        "text-lg min-[1184px]:text-sm"
+                        "text-lg min-[640px]:text-sm",
+                        isMdView && "md:text-xs lg:text-sm"
                       )}
                     >
                       <Link
                         href={item.url}
-                        className="text-lg min-[1184px]:text-sm"
+                        className={cn(
+                          "text-lg min-[640px]:text-sm",
+                          isMdView && "md:text-xs lg:text-sm"
+                        )}
                       >
                         {item.title}
                       </Link>
@@ -88,7 +107,12 @@ function AppSidebar() {
               })}
             </SidebarMenu>
           </SidebarGroupContent>
-          <SidebarGroupLabel className="mt-8 text-lg min-[1184px]:text-sm">
+          <SidebarGroupLabel
+            className={cn(
+              "mt-8 text-lg min-[640px]:text-sm",
+              isMdView && "md:text-xs lg:text-sm"
+            )}
+          >
             Components
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -103,12 +127,16 @@ function AppSidebar() {
                       className={cn(
                         isActive &&
                           "bg-sidebar-accent text-sidebar-accent-foreground",
-                        "text-lg min-[1184px]:text-sm"
+                        "text-lg min-[640px]:text-sm",
+                        isMdView && "md:text-xs lg:text-sm"
                       )}
                     >
                       <Link
                         href={item.url}
-                        className="text-lg min-[1184px]:text-sm"
+                        className={cn(
+                          "text-lg min-[640px]:text-sm",
+                          isMdView && "md:text-xs lg:text-sm"
+                        )}
                       >
                         {item.title}
                       </Link>
@@ -118,7 +146,12 @@ function AppSidebar() {
               })}
             </SidebarMenu>
           </SidebarGroupContent>
-          <SidebarGroupLabel className="mt-8 text-lg min-[1184px]:text-sm">
+          <SidebarGroupLabel
+            className={cn(
+              "mt-8 text-lg min-[640px]:text-sm",
+              isMdView && "md:text-xs lg:text-sm"
+            )}
+          >
             Social
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -128,13 +161,19 @@ function AppSidebar() {
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
                       asChild
-                      className="text-lg min-[1184px]:text-sm"
+                      className={cn(
+                        "text-lg min-[640px]:text-sm",
+                        isMdView && "md:text-xs lg:text-sm"
+                      )}
                     >
                       <Link
                         href={item.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-lg min-[1184px]:text-sm"
+                        className={cn(
+                          "text-lg min-[640px]:text-sm",
+                          isMdView && "md:text-xs lg:text-sm"
+                        )}
                       >
                         {item.title}
                       </Link>
@@ -151,19 +190,23 @@ function AppSidebar() {
 }
 
 export function LayoutClient({ children }: { children: React.ReactNode }) {
-  const MOBILE_SIDEBAR_VIEWPORT_THRESHOLD = 1184
+  const MOBILE_SIDEBAR_VIEWPORT_THRESHOLD = 768
+  const MD_SIDEBAR_VIEWPORT_THRESHOLD = 1024
 
   return (
     <SidebarProvider
       defaultOpen={true}
       viewportWidth={MOBILE_SIDEBAR_VIEWPORT_THRESHOLD}
+      mdViewportWidth={MD_SIDEBAR_VIEWPORT_THRESHOLD}
     >
       <div className="w-full">
         <Header triggerViewportWidth={MOBILE_SIDEBAR_VIEWPORT_THRESHOLD} />
         <div className="flex h-full px-4 pt-32">
-          <div className="mx-auto flex w-full max-w-2xl flex-col">
-            <main className="flex-1">{children}</main>
-            <Footer />
+          <div className="relative mx-auto grid max-w-screen-2xl grid-cols-6 md:grid-cols-12">
+            <div className="col-start-1 col-end-7 flex h-full flex-1 flex-col md:col-start-4 md:col-end-12 lg:col-end-10">
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
           </div>
         </div>
         <AppSidebar />
