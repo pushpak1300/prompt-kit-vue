@@ -335,7 +335,7 @@ function ResponseStream({
     }
     
     .fade-segment {
-      display: inline;
+      display: inline-block;
       opacity: 0;
       animation: fadeIn ${getFadeDuration()}ms ease-out forwards;
     }

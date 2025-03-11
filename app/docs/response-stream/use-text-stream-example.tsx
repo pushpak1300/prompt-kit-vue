@@ -20,7 +20,7 @@ export function UseTextStreamExample() {
     }
     
     .custom-fade-segment {
-      display: inline;
+      display: inline-block;
       opacity: 0;
       animation: fadeIn 1000ms ease-out forwards;
     }
