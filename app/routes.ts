@@ -72,6 +72,18 @@ export const routes: Route[] = [
     order: 10,
     type: "component",
   },
+  {
+    path: "/docs/response-stream",
+    label: "Response Stream",
+    order: 11,
+    type: "component",
+  },
+  {
+    path: "/docs/reasoning",
+    label: "Reasoning",
+    order: 12,
+    type: "component",
+  },
 ]
 
 export function getNavigation(currentPath: string) {
