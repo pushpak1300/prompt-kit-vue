@@ -10,7 +10,7 @@ const projects = [
   {
     title: "zola.chat",
     href: "https://zola.chat",
-    thumbnail: "https://www.zola.chat/cover_zola.jpg",
+    thumbnail: "https://www.zola.chat/cover_zola.webp",
   },
   {
     title: "emojis.com",
@@ -48,7 +48,7 @@ export default function Showcase() {
               unoptimized
               width={1200}
               height={630}
-              className="h-full w-full object-cover object-left"
+              className="h-full w-full object-cover"
             />
 
             <div
