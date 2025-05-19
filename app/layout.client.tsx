@@ -12,6 +12,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
+  SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
@@ -69,15 +70,18 @@ function AppSidebar() {
 
   return (
     <Sidebar className="h-full border-none shadow-none">
-      <SidebarContent className="border-none bg-white">
-        <ScrollArea className="h-full pt-0 pr-4 md:pl-7 lg:pl-20">
-          <div className="flex h-full flex-col pb-20 pl-0 md:pt-[8.2rem]">
-            <SidebarHeader className="hidden md:block">
-              <Link href="/" className="flex items-center">
-                <h1 className="px-2 text-sm">prompt-kit</h1>
+      <SidebarContent className="bg-muted/30 border-none">
+        <ScrollArea className="h-full p-0">
+          <div className="flex h-full flex-col pb-20 pl-0">
+            <SidebarHeader className="hidden px-5 pt-8 md:block">
+              <Link
+                href="/"
+                className="flex items-center text-xl font-medium tracking-tighter"
+              >
+                <h1 className="pl-2">prompt-kit</h1>
               </Link>
             </SidebarHeader>
-            <SidebarGroup className="border-none bg-white">
+            <SidebarGroup className="border-none pr-0 pl-2 md:px-5 md:pt-[3.6rem]">
               <SidebarGroupLabel className="text-lg md:text-sm">
                 Core
               </SidebarGroupLabel>
@@ -92,8 +96,9 @@ function AppSidebar() {
                           asChild
                           className={cn(
                             isActive &&
-                              "bg-sidebar-accent text-sidebar-accent-foreground",
-                            "text-lg md:text-sm"
+                              "text-sidebar-accent-foreground font-semibold",
+                            "text-lg hover:bg-transparent hover:font-semibold active:bg-transparent md:text-sm",
+                            "transition-all duration-200"
                           )}
                         >
                           <Link href={item.url}>{item.title}</Link>
@@ -117,8 +122,9 @@ function AppSidebar() {
                           asChild
                           className={cn(
                             isActive &&
-                              "bg-sidebar-accent text-sidebar-accent-foreground",
-                            "text-lg md:text-sm"
+                              "text-sidebar-accent-foreground font-semibold",
+                            "text-lg hover:bg-transparent hover:font-semibold active:bg-transparent md:text-sm",
+                            "transition-all duration-200"
                           )}
                         >
                           <Link href={item.url}>{item.title}</Link>
@@ -138,7 +144,7 @@ function AppSidebar() {
                       <SidebarMenuItem key={item.title}>
                         <SidebarMenuButton
                           asChild
-                          className="text-lg md:text-sm"
+                          className="bg-transparent text-lg transition-all duration-200 hover:bg-transparent hover:font-semibold active:bg-transparent md:text-sm"
                         >
                           <Link href={item.url}>{item.title}</Link>
                         </SidebarMenuButton>
@@ -148,7 +154,10 @@ function AppSidebar() {
                 </SidebarMenu>
               </SidebarGroupContent>
               <SidebarGroupLabel className="mt-8 text-lg md:text-sm">
-                <SidebarMenuButton asChild className="text-lg md:text-sm">
+                <SidebarMenuButton
+                  asChild
+                  className="bg-transparent text-lg transition-all duration-200 hover:bg-transparent hover:font-semibold active:bg-transparent md:text-sm"
+                >
                   <Link href="/docs/showcase" className="-m-2">
                     Showcase
                   </Link>
@@ -164,7 +173,7 @@ function AppSidebar() {
                       <SidebarMenuItem key={item.title}>
                         <SidebarMenuButton
                           asChild
-                          className="text-lg md:text-sm"
+                          className="bg-transparent text-lg transition-all duration-200 hover:bg-transparent hover:font-semibold active:bg-transparent md:text-sm"
                         >
                           <Link
                             href={item.url}
