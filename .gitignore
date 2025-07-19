@@ -22,3 +22,9 @@ logs
 .env
 .env.*
 !.env.example
+
+# Old files
+app-old/
+components-old/
+lib-old/
+public-old/
