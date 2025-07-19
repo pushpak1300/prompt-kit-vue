@@ -4,7 +4,7 @@ import { codeToHtml } from "@/lib/shiki"
 import { cn } from "@/lib/utils"
 import type { MDXComponents } from "mdx/types"
 import Link from "next/link"
-import { extractCodeFromFilePath } from "./lib/code"
+import { extractCodeFromFilePath } from "./lib-old/code"
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

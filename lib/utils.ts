@@ -1,5 +1,5 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -13,18 +13,18 @@ export function getBaseUrl() {
   if (typeof window === "undefined") {
     // Check for Vercel-specific environment variables
     // Production URL takes precedence if available (works in all environments)
-    if (process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL) {
-      return `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`
+    if (process.env.NUXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL) {
+      return `https://${process.env.NUXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`
     }
 
     // For branch deployments
-    if (process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL) {
-      return `https://${process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL}`
+    if (process.env.NUXT_PUBLIC_VERCEL_BRANCH_URL) {
+      return `https://${process.env.NUXT_PUBLIC_VERCEL_BRANCH_URL}`
     }
 
     // For regular deployments
-    if (process.env.NEXT_PUBLIC_VERCEL_URL) {
-      return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+    if (process.env.NUXT_PUBLIC_VERCEL_URL) {
+      return `https://${process.env.NUXT_PUBLIC_VERCEL_URL}`
     }
 
     // Legacy support
@@ -33,8 +33,8 @@ export function getBaseUrl() {
     }
 
     // Fall back to explicitly set environment variables
-    if (process.env.NEXT_PUBLIC_BASE_URL) {
-      return process.env.NEXT_PUBLIC_BASE_URL
+    if (process.env.NUXT) {
+      return process.env.NUXT_PUBLIC_BASE_URL
     }
 
     // Default for development
